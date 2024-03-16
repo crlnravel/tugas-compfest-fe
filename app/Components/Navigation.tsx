@@ -14,7 +14,7 @@ export const Navigation: React.FC<Props> = ({ children }: Props) => {
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
-            <div className="drawer-content flex flex-col items-center py-6">
+            <div className="drawer-content flex flex-col items-center p-6 gap-2">
                 {children}
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <div className="btm-nav bg-primary-content lg:hidden">
