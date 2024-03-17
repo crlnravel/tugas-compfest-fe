@@ -11,7 +11,7 @@ export const FoodsCarousel: React.FC = () => {
 
     useEffect(() => {
         const getFoods = async () => {
-            const { data, status }: ApiMakananResponse = await axios.get<ApiMakananResponse>(process.env.NEXT_PUBLIC_BACKEND_URL + "/makanan")
+            const { data, status } = await axios.get<Makanan[]>(process.env.NEXT_PUBLIC_BACKEND_URL + "/makanan")
 
             setFoods(data)
             setIsLoading(false)

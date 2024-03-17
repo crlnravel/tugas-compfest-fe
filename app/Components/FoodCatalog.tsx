@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useEffect, useState} from "react";
-import {ApiMakananResponse, Makanan} from "@/app/interface";
+import {Makanan} from "@/app/interface";
 import axios from "axios";
 import {useSearchParams} from "next/navigation";
 import {faker} from "@faker-js/faker";
@@ -34,8 +34,8 @@ const generateFoods = (numOfFood: number) => {
     return foods
 }
 
-const paginate = (items, pageNumber, pageSize) => {
-    const startIndex = (pageNumber - 1) * pageSize;
+const paginate = (items: Makanan[], pageNumber: string | number, pageSize: number) => {
+    const startIndex = (+pageNumber - 1) * pageSize;
     return items.slice(startIndex, startIndex + pageSize);
 }
 
@@ -44,24 +44,24 @@ export const FoodCatalog: React.FC = () => {
     const [allFoods, setAllFoods] = useState<Makanan[]>()
 
     const searchParams = useSearchParams()
-    const pageNumber = +searchParams.get("page")
 
     useEffect(() => {
         const getFoods = async () => {
-            const { data, status }: ApiMakananResponse = await axios.get<ApiMakananResponse>(process.env.NEXT_PUBLIC_BACKEND_URL + "/makanan")
+            const { data, status } = await axios.get<Makanan[]>(process.env.NEXT_PUBLIC_BACKEND_URL + "/makanan")
 
             setFoods(data)
         }
 
         setAllFoods(generateFoods(100))
-
     }, []);
 
     useEffect(() => {
-        if (allFoods) {
+        const pageNumber = searchParams.get("page") || 1;
+
+        if (allFoods && searchParams.get("page")) {
             setFoods(paginate(allFoods, pageNumber, 20))
         }
-    }, [allFoods, pageNumber])
+    }, [allFoods, searchParams])
 
     const dummySkeleton = []
 
