@@ -21,7 +21,7 @@ const config: Config = {
       require('@tailwindcss/line-clamp'),
   ],
   daisyui: {
-    themes: ["retro", "coffee", "cyberpunk"],
+    themes: ["valentine", "coffee", "cyberpunk"],
   },
 };
 export default config;

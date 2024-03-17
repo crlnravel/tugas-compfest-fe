@@ -14,8 +14,10 @@ export const Navigation: React.FC<Props> = ({ children }: Props) => {
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
-            <div className="drawer-content flex flex-col items-center p-6 gap-2">
-                {children}
+            <div className="drawer-content  flex flex-col items-center py-11 pr-9 gap-2">
+                <div className="w-full rounded-[40px] p-12 bg-base-100 text-secondary ">
+                    {children}
+                </div>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <div className="btm-nav bg-primary-content lg:hidden">
                     <Link href={"/"}>
@@ -37,15 +39,26 @@ export const Navigation: React.FC<Props> = ({ children }: Props) => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu px-4 py-8 min-h-full bg-base-200 text-base-content gap-8">
+                <ul className="menu px-6 py-12 min-h-full text-base-content gap-8">
                     <li>
-                        <Link href={"/"}><BiSolidHome size={25} /></Link>
+                        <Link href={"/"} className="space-x-5 pl-5 pr-12 py-4">
+                            <div className="rounded-2xl p-3 bg-white">
+                                <BiSolidHome size={25} />
+                            </div>
+                            <span className="font-semibold">Home</span>
+                        </Link>
                     </li>
                     <li>
-                        <Link href={"/cart"}><BiSolidCart size={25} /></Link>
+                        <Link href={"/cart"} className="space-x-3 p-5">
+                            <BiSolidCart size={25} />
+                            <span>Cart</span>
+                        </Link>
                     </li>
                     <li>
-                        <Link href={"/profile"}><BsPersonFill size={25} /></Link>
+                        <Link href={"/profile"} className="space-x-3 p-5">
+                            <BsPersonFill size={25} />
+                            <span>Profile</span>
+                        </Link>
                     </li>
                 </ul>
             </div>

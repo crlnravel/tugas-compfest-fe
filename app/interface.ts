@@ -13,10 +13,11 @@ export interface Makanan {
     id: number,
     nama: string,
     deskripsi: string,
-    created_at: string,
-    updated_at: string,
+    createdAt: string,
+    updatedAt: string,
     harga: number,
     stok: number,
+    tokoId: number,
 }
 
 
